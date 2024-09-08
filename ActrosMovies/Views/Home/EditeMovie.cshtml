@@ -1,0 +1,20 @@
+@model Movie
+
+<h2>Edit Movie</h2>
+
+<form asp-action="UpdateMovie" method="post">
+    <input type="hidden" name="MovieId" value="@Model.MovieId" />
+    <div>
+        <label>Title</label>
+        <input type="text" name="Title" value="@Model.Title" required />
+    </div>
+    <div>
+        <label>Description</label>
+        <textarea name="Description" required>@Model.Description</textarea>
+    </div>
+    <div>
+        <label>Movie Image URL</label>
+        <input type="text" name="MovieImage" value="@Model.MovieImage" />
+    </div>
+    <button type="submit">Update Movie</button>
+</form>

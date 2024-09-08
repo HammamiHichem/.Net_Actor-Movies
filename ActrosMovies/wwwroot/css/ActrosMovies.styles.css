@@ -1,0 +1,53 @@
+/* Style général de la navbar */
+.navbar {
+    background-color: #343a40; /* Couleur de fond sombre pour la navbar */
+    padding: 0.5rem 1rem; /* Espacement intérieur de la navbar */
+}
+
+.navbar-brand {
+    color: #ffffff; /* Couleur du texte de la marque */
+    font-size: 1.5rem; /* Taille de police pour la marque */
+    font-weight: bold; /* Poids de police pour la marque */
+    text-transform: uppercase; /* Texte en majuscules pour la marque */
+}
+
+.navbar-brand:hover {
+    color: #adb5bd; /* Couleur de survol de la marque */
+}
+
+.navbar-nav .nav-item {
+    margin-left: 1rem; /* Espacement entre les éléments de la nav */
+}
+
+.navbar-nav .nav-link {
+    color: #ffffff; /* Couleur du texte des liens de nav */
+    font-size: 1rem; /* Taille de police des liens */
+    font-weight: 500; /* Poids de police des liens */
+    text-transform: uppercase; /* Texte en majuscules pour les liens */
+    padding: 0.5rem 1rem; /* Espacement intérieur des liens */
+    transition: color 0.3s, background-color 0.3s; /* Effet de transition */
+}
+
+.navbar-nav .nav-link:hover {
+    color: #007bff; /* Couleur de survol des liens */
+    background-color: rgba(255, 255, 255, 0.1); /* Fond de survol des liens */
+    border-radius: 5px; /* Bordure arrondie sur survol */
+}
+
+.navbar-toggler {
+    border: none; /* Enlève la bordure du bouton de basculement */
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;base64,..."); /* Icône de basculement personnalisée */
+}
+
+@media (max-width: 767.98px) {
+    .navbar-collapse {
+        background-color: #343a40; /* Couleur de fond de la navbar lors du déploiement sur petits écrans */
+    }
+
+    .navbar-nav .nav-link {
+        color: #ffffff; /* Couleur du texte des liens sur petits écrans */
+    }
+}

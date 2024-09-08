@@ -1,0 +1,64 @@
+@model MyViewModel
+
+@{
+    ViewData["Title"] = "Manage Actors";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4">Add a New Actor</h2>
+
+    <!-- Form to add a new actor -->
+    <form asp-action="AddActor" method="post" class="border p-4 shadow-sm bg-light">
+        <div class="form-group">
+            <label for="Name">Actor Name</label>
+            <input type="text" class="form-control" name="Name" required />
+        </div>
+        <div class="form-group mt-3">
+            <label for="Image">Image URL</label>
+            <input type="text" class="form-control" name="Image" required />
+        </div>
+        <button type="submit" class="btn btn-primary mt-4">Add Actor</button>
+    </form>
+
+    <h3 class="mt-5">All Actors</h3>
+
+    <!-- List of all actors -->
+    <div class="row mt-3">
+        @foreach (var actor in Model.AllActors)
+        {
+            <div id="actor-@actor.ActorId" class="col-md-4 mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="@actor.Image" alt="@actor.Name" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">@actor.Name</h5>
+                        <form method="post" class="d-inline">
+                            <button type="button" class="btn btn-danger" onclick="deleteActor(@actor.ActorId)">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    function deleteActor(actorId) {
+        if (confirm("Are you sure you want to delete this actor?")) {
+            fetch(`/actors/${actorId}/destroy`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Remove the actor element from the DOM
+                    document.getElementById(`actor-${actorId}`).remove();
+                } else {
+                    alert("Failed to delete actor.");
+                }
+            });
+        }
+    }
+</script>
